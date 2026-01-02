@@ -9,6 +9,10 @@ export const router = createBrowserRouter([
         element: <RootLayout />,
         children: [
             {
+                index:true,
+                element: <Navigate to="/search" replace/>,                
+            },
+            {
                 path: "search",
                 element: <IdSearch />,
             },
