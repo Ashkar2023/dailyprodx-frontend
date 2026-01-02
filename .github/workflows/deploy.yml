@@ -1,0 +1,42 @@
+name: Deploy dailyprodx frontend
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Setup node
+        uses: actions/setup-node@v6
+        with: 
+          node-version: 22
+
+      - name: cache node_modules
+        uses: actions/cache@v4
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-22-${{ hashFiles('package-lock.json') }}
+          restore-keys: ${{ runner.os }}-node-22-
+
+      - name: Install npm deps
+        run: npm ci
+
+      - name: Build
+        run: npm run build
+
+      - name: push dist to server
+        uses: appleboy/scp-action@v1
+        with: 
+          host: ${{ secrets.SERVER_IP }}
+          username: ${{ secrets.SERVER_USERNAME }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          source: dist/*
+          target: "/home/ashkar/dailyprodx-frontend/dist/"
+          rm: true
+          strip_components: true
