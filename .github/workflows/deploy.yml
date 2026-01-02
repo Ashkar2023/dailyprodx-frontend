@@ -34,7 +34,7 @@ jobs:
         uses: appleboy/scp-action@v1
         with: 
           host: ${{ secrets.SERVER_IP }}
-          username: ${{ secrets.SERVER_USERNAME }}
+          username: ${{ secrets.SERVER_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           source: dist/*
           target: "/home/ashkar/dailyprodx-frontend/dist/"
