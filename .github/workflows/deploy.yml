@@ -39,4 +39,4 @@ jobs:
           source: dist/*
           target: "/home/ashkar/dailyprodx-frontend/dist/"
           rm: true
-          strip_components: true
+          strip_components: 1
