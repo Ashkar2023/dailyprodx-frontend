@@ -1,5 +1,5 @@
 
-export const NotFound = () => {
+export const NotFoundPage = () => {
     return (
         <div className="w-full h-full flex flex-col justify-center items-center ]">
            <p>Lost in the upside down</p>

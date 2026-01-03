@@ -1,7 +1,10 @@
 @import "tailwindcss";
 
 @theme{
-    --color-primary: #fff9ed;
+    --color-primary: #FFF9ED;
+    --color-card: #fff;
+
+    --color-border: var(--color-gray-300) ;
 
     --font-sans: 'Neue Haas Grotesk Display Pro', sans-serif;
 

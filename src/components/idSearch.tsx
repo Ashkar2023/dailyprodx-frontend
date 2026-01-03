@@ -2,7 +2,7 @@
 
 export const IdSearch = () => {
     return (
-        <div className="w-full h-full flex flex-col justify-center items-center">
+        <div className="h-dvh w-full flex flex-col justify-center items-center">
             <div className="mb-6 text-center">
                 <p className="text-xl font-medium text-black">
                     Enter product ID

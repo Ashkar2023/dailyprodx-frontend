@@ -1,7 +1,8 @@
 import { createBrowserRouter, Navigate } from "react-router-dom";
-import { RootLayout } from "../layout/root.layout";
+import { RootLayout } from "../layouts/root.layout";
 import { IdSearch } from "../components/idSearch";
-import { NotFound } from "../components/notFound";
+import { NotFoundPage } from "../pages/notFound";
+import { BrowsePage } from "../pages/browse";
 
 export const router = createBrowserRouter([
     {
@@ -13,8 +14,12 @@ export const router = createBrowserRouter([
                 element: <IdSearch />,
             },
             {
+                path: "browse",
+                element: <BrowsePage/>
+            },
+            {
                 path:"lost",
-                element: <NotFound/>,                
+                element: <NotFoundPage/>,                
             },
             {
                 path:"*",
