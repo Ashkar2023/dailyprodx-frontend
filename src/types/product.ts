@@ -1,0 +1,36 @@
+export type AffiliateUrl = {
+	url: string;
+	label: string;
+	platform: string;
+};
+
+type Images = {
+    directus_files_id: string;
+}[];
+
+type Tags = {
+    tags_id: {
+        id: number;
+        name: string;
+    };
+}[];
+
+export type Product = {
+	id: number;
+	public_id: number;
+
+	title: string;
+	description: string | null;
+
+	status: "draft" | "published" | "archived";
+
+	price_range: string;
+	thumbnail: string; // Directus file UUID
+	images: Images;
+	tags: Tags;
+
+	affiliate_urls: AffiliateUrl[];
+
+	created_at: string; // ISO datetime
+	updated_at: string; // ISO datetime
+};
