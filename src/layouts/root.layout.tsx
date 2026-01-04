@@ -7,7 +7,7 @@ export const RootLayout = () => {
     const isNotFound = pathname === "/lost";
 
     return (
-        <div className={"flow-root w-full bg-primary " + (isNotFound ? "animate-turn-red":"")}>
+        <div className={"flow-root w-full bg-primary " + (isNotFound ? "animate-turn-red" : "")}>
             <Navbar />
             <Outlet />
         </div>
