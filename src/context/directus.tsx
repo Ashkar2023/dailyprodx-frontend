@@ -1,6 +1,6 @@
 import { createContext, type ReactNode } from "react";
 import { createDirectus, rest } from "@directus/sdk";
-import type { Product } from "../types/product";
+import type { Product } from "../types/product.types";
 
 const directus = createDirectus<{
     products: Product[]

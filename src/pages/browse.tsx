@@ -1,18 +1,23 @@
 import { Ellipsis, Loader } from "lucide-react";
 import { Card } from "../components/card";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import clsx from "clsx";
 import { useDirectus } from "../hooks/useDirectus";
-import { readItems } from "@directus/sdk";
-import type { Product } from "../types/product";
+import { isDirectusError, readItems } from "@directus/sdk";
+import type { Product } from "../types/product.types";
+import { useNavigate } from "react-router";
+import toast from "react-hot-toast";
 
 
 export const BrowsePage = () => {
-    const arr = Array.from({ length: 50 }, () => 1);
+    const cardsWrapperRef = useRef<HTMLDivElement>(null);
+    const navigate = useNavigate();
     const [isLoading, setLoading] = useState<boolean>(false);
     const [products, setProducts] = useState<Product[]>([]);
     const [page, setPage] = useState(0);
     const [showLoadMore, setShowLoadMore] = useState(false);
+
+
     const directusClient = useDirectus();
 
     const LIMIT = 12
@@ -24,32 +29,134 @@ export const BrowsePage = () => {
                 offset: 0 * LIMIT,
                 filter: { status: { _eq: "published" } },
                 // @ts-ignore 
-                fields: ["*","images.directus_files_id"]
+                fields: ["*", "images.directus_files_id", "tags.tags_id.name"]
             })
         );
 
         ; (async () => {
-            const response = await request;
-            if (response.length < LIMIT) {
-                setShowLoadMore(false);
-            }
-            setProducts(response);
-        })()
+            try {
+                const response = await request;
+                if (response.length < LIMIT) {
+                    setShowLoadMore(false);
+                }
+                setProducts(response);
+            } catch (error) {
+                // if (isDirectusError(error)) {
+                // } else {
+                // }
 
+                toast.error((error as Error).message);
+            }
+
+        })()
 
         return () => { }
     }, []);
 
+    useEffect(() => {
+        const handleCardClick = (e: MouseEvent) => {
+            const target = e.target as HTMLElement;
+            const card = target.closest<HTMLElement>('[data-card]');
+
+            if (target.closest("button[data-copy]")) return;
+
+            if (card) {
+                const publicId = card.dataset.publicId;
+                navigate(`/p/${publicId}`);
+            }
+        };
+
+        if (cardsWrapperRef.current) {
+            cardsWrapperRef.current.addEventListener("click", handleCardClick, { capture: false });
+        }
+
+        () => {
+            if (cardsWrapperRef.current) {
+                cardsWrapperRef.current.removeEventListener("click", handleCardClick);
+            }
+        }
+    }, [])
+
     return (
         <div className="flow-root min-h-[calc(100vh-90px)] sm:mt-[90px]">
-            <div className="w-max mx-auto flex flex-col items-center my-4">
+            <div className="w-max mx-auto flex flex-col items-center my-6">
                 <h1 className="text-lg">Curated products</h1>
                 <p className="text-sm text-gray-500">Just for you!</p>
             </div>
 
-            <div className="min-h-full grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 w-fit mx-auto gap-3 md:gap-4 my-8">
+            <div
+                className="min-h-full grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 w-fit mx-auto gap-3 md:gap-4 my-8"
+                data-cards-wrapper
+                ref={cardsWrapperRef}
+            >
                 {
-                    products.map((p) => <Card product={p} key={p.public_id}/>)
+                    products.map((p) => <Card product={p} key={p.public_id} />)
+                }
+                {
+                    products.map((p) => <Card product={p} key={p.public_id} />)
+                }
+                {
+                    products.map((p) => <Card product={p} key={p.public_id} />)
+                }
+                {
+                    products.map((p) => <Card product={p} key={p.public_id} />)
+                }
+                {
+                    products.map((p) => <Card product={p} key={p.public_id} />)
+                }
+                {
+                    products.map((p) => <Card product={p} key={p.public_id} />)
+                }
+                {
+                    products.map((p) => <Card product={p} key={p.public_id} />)
+                }
+                {
+                    products.map((p) => <Card product={p} key={p.public_id} />)
+                }
+                {
+                    products.map((p) => <Card product={p} key={p.public_id} />)
+                }
+                {
+                    products.map((p) => <Card product={p} key={p.public_id} />)
+                }
+                {
+                    products.map((p) => <Card product={p} key={p.public_id} />)
+                }
+                {
+                    products.map((p) => <Card product={p} key={p.public_id} />)
+                }
+                {
+                    products.map((p) => <Card product={p} key={p.public_id} />)
+                }
+                {
+                    products.map((p) => <Card product={p} key={p.public_id} />)
+                }
+                {
+                    products.map((p) => <Card product={p} key={p.public_id} />)
+                }
+                {
+                    products.map((p) => <Card product={p} key={p.public_id} />)
+                }
+                {
+                    products.map((p) => <Card product={p} key={p.public_id} />)
+                }
+                {
+                    products.map((p) => <Card product={p} key={p.public_id} />)
+                }
+                {
+                    products.map((p) => <Card product={p} key={p.public_id} />)
+                }
+                {
+                    products.map((p) => <Card product={p} key={p.public_id} />)
+                }
+                {
+                    products.map((p) => <Card product={p} key={p.public_id} />)
+                }
+                {
+                    products.map((p) => <Card product={p} key={p.public_id} />)
+                }
+                {
+                    products.map((p) => <Card product={p} key={p.public_id} />)
                 }
             </div>
 

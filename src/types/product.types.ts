@@ -2,17 +2,18 @@ export type AffiliateUrl = {
 	url: string;
 	label: string;
 	platform: string;
+	best: boolean;
 };
 
 type Images = {
-    directus_files_id: string;
+	directus_files_id: string;
 }[];
 
 type Tags = {
-    tags_id: {
-        id: number;
-        name: string;
-    };
+	tags_id: {
+		id: number;
+		name: string;
+	};
 }[];
 
 export type Product = {

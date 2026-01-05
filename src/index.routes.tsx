@@ -1,9 +1,10 @@
 import { createBrowserRouter, Navigate } from "react-router-dom";
-import { RootLayout } from "../layouts/root.layout";
-import { IdSearch } from "../components/idSearch";
-import { NotFoundPage } from "../pages/notFound";
-import { BrowsePage } from "../pages/browse";
-import { ProductPage } from "../pages/product";
+import { RootLayout } from "./layouts/root.layout";
+import { IdSearch } from "./components/idSearch";
+import { NotFoundPage } from "./pages/notFound";
+import { BrowsePage } from "./pages/browse";
+import { ProductPage } from "./pages/product";
+import { SearchPage } from "./pages/search";
 
 export const router = createBrowserRouter([
     {
@@ -16,7 +17,7 @@ export const router = createBrowserRouter([
             },
             {
                 path: "search",
-                element: <IdSearch />,
+                element: <SearchPage />,
             },
             {
                 path: "browse",
