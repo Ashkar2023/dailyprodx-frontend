@@ -19,7 +19,7 @@ export const IdSearch = () => {
                 scale: 1,
                 opacity: 1,
                 duration: 0.4,
-                delay: 0.3,
+                delay: 0.2,
                 filter: "blur(0px)",
                 ease: "power2.out"
             }

@@ -78,83 +78,17 @@ export const BrowsePage = () => {
     }, [])
 
     return (
-        <div className="flow-root min-h-[calc(100vh-90px)] sm:mt-[90px]">
+        <div className="flow-root min-h-[calc(100vh-90px)] mt-[90px]">
             <div className="w-max mx-auto flex flex-col items-center my-6">
                 <h1 className="text-lg">Curated products</h1>
                 <p className="text-sm text-gray-500">Just for you!</p>
             </div>
 
             <div
-                className="min-h-full grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 w-fit mx-auto gap-3 md:gap-4 my-8"
+                className="min-h-full grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 w-fit mx-auto gap-2 xs:gap-3 md:gap-4 my-8"
                 data-cards-wrapper
                 ref={cardsWrapperRef}
             >
-                {
-                    products.map((p) => <Card product={p} key={p.public_id} />)
-                }
-                {
-                    products.map((p) => <Card product={p} key={p.public_id} />)
-                }
-                {
-                    products.map((p) => <Card product={p} key={p.public_id} />)
-                }
-                {
-                    products.map((p) => <Card product={p} key={p.public_id} />)
-                }
-                {
-                    products.map((p) => <Card product={p} key={p.public_id} />)
-                }
-                {
-                    products.map((p) => <Card product={p} key={p.public_id} />)
-                }
-                {
-                    products.map((p) => <Card product={p} key={p.public_id} />)
-                }
-                {
-                    products.map((p) => <Card product={p} key={p.public_id} />)
-                }
-                {
-                    products.map((p) => <Card product={p} key={p.public_id} />)
-                }
-                {
-                    products.map((p) => <Card product={p} key={p.public_id} />)
-                }
-                {
-                    products.map((p) => <Card product={p} key={p.public_id} />)
-                }
-                {
-                    products.map((p) => <Card product={p} key={p.public_id} />)
-                }
-                {
-                    products.map((p) => <Card product={p} key={p.public_id} />)
-                }
-                {
-                    products.map((p) => <Card product={p} key={p.public_id} />)
-                }
-                {
-                    products.map((p) => <Card product={p} key={p.public_id} />)
-                }
-                {
-                    products.map((p) => <Card product={p} key={p.public_id} />)
-                }
-                {
-                    products.map((p) => <Card product={p} key={p.public_id} />)
-                }
-                {
-                    products.map((p) => <Card product={p} key={p.public_id} />)
-                }
-                {
-                    products.map((p) => <Card product={p} key={p.public_id} />)
-                }
-                {
-                    products.map((p) => <Card product={p} key={p.public_id} />)
-                }
-                {
-                    products.map((p) => <Card product={p} key={p.public_id} />)
-                }
-                {
-                    products.map((p) => <Card product={p} key={p.public_id} />)
-                }
                 {
                     products.map((p) => <Card product={p} key={p.public_id} />)
                 }

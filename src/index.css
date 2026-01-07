@@ -6,6 +6,8 @@
 
 	--color-border: var(--color-gray-300);
 
+    --breakpoint-xs: 340px;
+
 	--font-sans: "Neue Haas Grotesk Display Pro", sans-serif;
 
 	--animate-turn-red: turn-red 0.6s ease-in forwards;
@@ -19,6 +21,8 @@
 			background-color: var(--color-red-700);
 		}
 	}
+
+
 }
 
 .bloom {
