@@ -105,7 +105,7 @@ export const ProductPage: FC = () => {
     return fetching ?
         <LoadingScreen />
         :
-        <div className="h-screen pt-14 px-4 pb-4">
+        <div className="h-dvh pt-14 px-4 pb-4">
             <div className="max-w-[332px] sm:max-w-4xl mx-auto h-full pt-8 pb-2">
                 {/* 5×6 Bento Grid */}
                 <div className="flex flex-col sm:grid grid-rows-7 sm:grid-rows-6 grid-cols-6 gap-3 md:gap-4 h-full">
