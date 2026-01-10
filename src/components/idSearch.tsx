@@ -1,14 +1,14 @@
 import { isDirectusError, readItems } from "@directus/sdk";
 import clsx from "clsx";
 import gsap from "gsap";
-import { useEffect, useRef, useState, type ChangeEvent } from "react";
+import { useCallback, useEffect, useRef, useState, type ChangeEvent } from "react";
 import toast from "react-hot-toast";
 import { useDirectus } from "../hooks/useDirectus";
 import { useNavigate } from "react-router";
 
 
 export const IdSearch = () => {
-    const searchWrapperRef = useRef(null);
+    const searchWrapperRef = useRef<HTMLDivElement>(null);
     const [searchValue, setSearchVvalue] = useState<string>("");
     const directusClient = useDirectus();
     const navigate = useNavigate();
@@ -28,12 +28,12 @@ export const IdSearch = () => {
                 filter: "blur(0px)",
                 ease: "power2.out"
             }
-        )
+        );
 
         return () => { fadeAndScale.kill() };
     }, []);
 
-    const findProduct = async () => {
+    const findProduct = useCallback(async () => {
         // TODO: convert to a hook, cause the same logic exists in idSearch.tsx
 
         const response = await directusClient.request(
@@ -60,7 +60,7 @@ export const IdSearch = () => {
                 product: response[0]
             }
         });
-    };
+    }, [searchValue]);
 
     const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
         if (e.target.value === "" || /^\d+$/.test(e.target.value)) {
@@ -95,6 +95,12 @@ export const IdSearch = () => {
                     className="text-8xl text-center font-bold max-w-[120px] h-[100px] outline-none uppercase border-b"
                     value={searchValue}
                     onChange={onChangeHandler}
+                    onKeyDown={async (e) => {
+                        if (e.key === "Enter") {
+                            console.log(searchValue)
+                            await findProduct();
+                        }
+                    }}
                 />
             </div>
 

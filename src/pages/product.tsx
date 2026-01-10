@@ -130,7 +130,7 @@ export const ProductPage: FC = () => {
                             {product?.description}
                         </p>
                         <div className="mt-2 space-y-3">
-                            <span className="text-xl sm:text-3xl font-bold text-gray-900">{product?.price_range}</span>
+                            <span className="text-xl sm:text-3xl font-bold text-gray-900"><span className="text-lg me-1">min</span>₹{product?.min_price}</span>
                             <div className="flex gap-2 sm:mt-2">
                                 <CopyButton
                                     url={product?.affiliate_urls[0].url!}
@@ -149,7 +149,7 @@ export const ProductPage: FC = () => {
 
                         {/* URL list */}
                         <div
-                            className="w-full h-full top-full border border-border/50 left-0 absolute bg-card rounded-3xl flex flex-col p-4"
+                            className="w-full h-full z-20 top-full border border-border/50 left-0 absolute bg-card rounded-3xl flex flex-col p-4"
                             id="all-links"
                         >
                             <div className="flex justify-between mb-3">
