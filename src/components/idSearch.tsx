@@ -47,7 +47,7 @@ export const IdSearch = () => {
         if (response.length !== 1) {
             toast.error(`No product exists with ID ${searchValue}`, {
                 id: `product-not-found-${searchValue}`,
-                duration: 1600,
+                duration: 2000,
                 style: {
                     backgroundColor: "rgba(229,0,0,0.2)"
                 }

@@ -22,6 +22,7 @@ export const ProductPage: FC = () => {
 
         if (productFromState) {
             setProduct(productFromState);
+            setFetching(false);
         } else {
             const request = directusClient.request(
                 readItems("products", {
@@ -67,7 +68,7 @@ export const ProductPage: FC = () => {
                 {
                     top: "100%",
                     duration: 0.6,
-                    ease: "power.in"
+                    ease: "power2.in"
                 },
             );
 
