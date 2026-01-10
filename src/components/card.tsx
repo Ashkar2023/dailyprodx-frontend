@@ -25,7 +25,7 @@ export const Card: FC<Props> = ({ product }) => {
 
     return (
         <div
-            className="flex flex-col w-[160px] sm:max-w-none sm:w-[200px] h-60 sm:h-64 p-2 space-y-2 bg-white/80 rounded-3xl border border-border shadow-xs shadow-black/10 hover:scale-105 transition-transform duration-150 ease-in-out cursor-pointer"
+            className="flex flex-col h-60 sm:h-64 w-[140px] xs:w-[160px] sm:w-[200px] p-2 space-y-2 bg-card-70 rounded-3xl border border-border shadow-xs shadow-black/10 hover:scale-105 transition-transform duration-150 ease-in-out cursor-pointer"
             data-card
             data-public-id={product.public_id}
         >

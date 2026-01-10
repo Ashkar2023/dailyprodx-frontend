@@ -77,7 +77,7 @@ export const Navbar = () => {
     useEffect(() => {
         gsap.to(mobileMenuRef.current, {
             height: showMenu ? "auto" : 0,
-            duration: 0.3,
+            duration:0.3,
             ease: "power2.inOut",
         });
     }, [showMenu]);
@@ -87,8 +87,9 @@ export const Navbar = () => {
         <>
             <nav
                 className={clsx(
-                    "fixed z-50 flex flex-wrap justify-between gap-x-8 gap-y-0 px-4 py-3 top-4 left-1/2 -translate-x-1/2 border border-border bg-[#FBF3DA]/30 backdrop-blur-md rounded-2xl shadow-sm shadow-black/5 w-[calc(280px+var(--spacing)*2)] xs:w-[calc(320px+var(--spacing)*3)] sm:w-fit",
-                    showMenu && "bg-[#FBF3DA]/70"
+                    "fixed z-50 flex flex-wrap justify-between gap-x-8 gap-y-0 px-4 py-3 top-4 left-1/2 -translate-x-1/2 border border-border backdrop-blur-md rounded-2xl shadow-sm shadow-black/5 w-[calc(280px+var(--spacing)*2)] xs:w-[calc(320px+var(--spacing)*3)] sm:w-fit",
+                    showMenu ? "bg-[#FBF3DA]" : "bg-[#FBF3DA]/30"
+                    
                 )}
                 ref={navRef}
             >

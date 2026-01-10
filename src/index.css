@@ -2,7 +2,9 @@
 
 @theme {
 	--color-primary: #fff9ed;
-	--color-card: #f6f1ea;
+	/* --color-card: color-mix(in oklab, #FCF3DA 70%, transparent); */
+	--color-card-70: color-mix(in oklab, var(--color-white) 70%, transparent);
+	--color-card: var(--color-gray-100);
 
 	--color-border: var(--color-gray-300);
 

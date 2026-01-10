@@ -21,10 +21,12 @@ export type Product = {
 	public_id: number;
 
 	title: string;
+    hook: string,
 	description: string | null;
 
 	status: "draft" | "published" | "archived";
 
+    min_price: number;
 	price_range: string;
 	thumbnail: string; // Directus file UUID
 	images: Images;
