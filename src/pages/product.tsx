@@ -183,35 +183,31 @@ export const ProductPage: FC = () => {
                         </div>
                     </div>
 
-                    {/* Bottom Left Tile - 2×2 */}
-                    <div className="hidden sm:col-span-2 sm:row-span-2 rounded-3xl border border-border/50 shadow-xs shadow-black/10 bg-card-70 p-5 sm:flex flex-col justify-between product-info">
-                        <h3 className="font-medium text-gray-700">Specifications</h3>
-                        <ul className="text-sm text-gray-500 space-y-1">
-                            <li>• 40mm Dynamic Drivers</li>
-                            <li>• 30hr Battery Life</li>
-                            <li>• Bluetooth 5.3</li>
-                            <li>• Active Noise Cancellation</li>
-                        </ul>
+                    {/* Tags Tile - 2×2 */}
+                    <div className="hidden sm:col-span-2 sm:row-span-2 rounded-3xl border border-border/50 shadow-xs shadow-black/10 bg-card-70 p-5 sm:flex flex-col gap-3 product-info">
+                        <h3 className="font-medium text-gray-700">Tags</h3>
+                        <div className="flex flex-wrap gap-2 overflow-y-scroll h-full items-start content-start">
+                            {product?.tags.map(t => {
+                                const tagname = t.tags_id.name;
+                                return (
+                                    <NavLink
+                                        to={`/browse/${tagname}`}
+                                        className="items-center px-3 py-1.5 text-xs font-medium bg-slate-200 text-gray-600 rounded-full border border-slate-200 hover:bg-gray-300 "
+                                    >
+                                        {tagname}
+                                    </NavLink>
+                                )
+                            })}
+                        </div>
                     </div>
 
                     {/* Bottom Right Tile - 3×2 */}
-                    <div className="hidden sm:col-span-4 sm:row-span-2 rounded-3xl border border-border/50 shadow-xs shadow-black/10 bg-card-70 p-5 sm:flex flex-col justify-between product-info">
-                        <h3 className="font-medium text-gray-700">Customer Reviews</h3>
-                        <div className="flex items-center gap-4">
-                            <div className="flex items-center gap-1">
-                                <span className="text-2xl font-bold text-gray-900">4.8</span>
-                                <span className="text-yellow-500 text-lg">★★★★★</span>
-                            </div>
-                            <span className="text-sm text-gray-400">Based on 1,247 reviews</span>
-                        </div>
-                        <p className="text-sm text-gray-500 italic line-clamp-2">
-                            "Absolutely stunning sound quality. The noise cancellation is top-notch
-                            and the comfort is unmatched for long listening sessions."
-                        </p>
+                    <div className="hidden sm:col-span-4 sm:row-span-2 rounded-3xl border border-border/50 shadow-xs shadow-black/10 bg-card-70 p-5 sm:flex justify-center items-center product-info">
+                        <h3 className="text-sm text-gray-700">No suggested products found</h3>
                     </div>
 
                 </div>
             </div>
-        </div>      
+        </div>
 };
 

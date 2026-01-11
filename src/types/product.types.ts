@@ -11,7 +11,7 @@ type Images = {
 
 type Tags = {
 	tags_id: {
-		id: number;
+		// id: number;
 		name: string;
 	};
 }[];
