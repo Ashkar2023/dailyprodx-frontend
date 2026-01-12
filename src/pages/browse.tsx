@@ -28,6 +28,7 @@ export const BrowsePage = () => {
                 limit: LIMIT,
                 offset: 0 * LIMIT,
                 filter: { status: { _eq: "published" } },
+                sort: "-public_id",
                 // @ts-ignore 
                 fields: ["*", "images.directus_files_id", "tags.tags_id.name"]
             })

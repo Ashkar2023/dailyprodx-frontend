@@ -29,7 +29,12 @@ export const Card: FC<Props> = ({ product }) => {
             data-card
             data-public-id={product.public_id}
         >
-            <img className="h-2/3 w-full object-cover rounded-2xl bg-black/35" src={`${import.meta.env.VITE_API_BASE_URL}/assets/${product.thumbnail}`} alt="" data-card-image />
+            <img
+                className="h-2/3 w-full object-cover rounded-2xl bg-black/35"
+                src={`${import.meta.env.VITE_API_BASE_URL}/assets/${product.thumbnail}?key=thumb-md`}
+                alt={product.title}
+                data-card-image
+            />
             <div data-card-body className="flex flex-col grow">
                 <div className="" data-card-content>
                     <h3 className="text-sm sm:text-base font-medium px-1 leading-5 text-gray-700 line-clamp-2 mb-1">{product.title}</h3>

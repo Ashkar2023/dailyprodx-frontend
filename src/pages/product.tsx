@@ -114,7 +114,7 @@ export const ProductPage: FC = () => {
                     {/* Image Tile - 3×4 (left) */}
                     <div className="h-[320px] sm:h-auto sm:col-span-3 sm:row-span-4 rounded-3xl bg-card-70 overflow-hidden product-info shadow-md shadow-black/20">
                         <img
-                            src={`${import.meta.env.VITE_API_BASE_URL}/assets/${product?.thumbnail}`}
+                            src={`${import.meta.env.VITE_API_BASE_URL}/assets/${product?.thumbnail}?key=hero-sm`}
                             alt="Product hero"
                             className="w-full h-full object-cover object-center"
                         />
