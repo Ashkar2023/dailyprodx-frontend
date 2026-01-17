@@ -5,6 +5,7 @@ import { NotFoundPage } from "./pages/notFound";
 import { BrowsePage } from "./pages/browse";
 import { ProductPage } from "./pages/product";
 import { SearchPage } from "./pages/search";
+import { PrivacyPolicy } from "./pages/privacy-policy";
 
 export const router = createBrowserRouter([
     {
@@ -30,6 +31,10 @@ export const router = createBrowserRouter([
             {
                 path:"lost",
                 element: <NotFoundPage/>,                
+            },
+            {
+                path: "privacy-policy",
+                element: <PrivacyPolicy />,
             },
             {
                 path:"*",

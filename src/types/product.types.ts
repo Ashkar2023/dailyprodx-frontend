@@ -1,39 +1,39 @@
 export type AffiliateUrl = {
-	url: string;
-	label: string;
-	platform: string;
-	best: boolean;
+    url: string;
+    label: string;
+    platform: string;
+    best: boolean;
 };
 
 type Images = {
-	directus_files_id: string;
+    directus_files_id: string;
 }[];
 
 type Tags = {
-	tags_id: {
-		// id: number;
-		name: string;
-	};
+    tags_id: {
+        // id: number;
+        name: string;
+    };
 }[];
 
 export type Product = {
-	id: number;
-	public_id: number;
+    id: number;
+    public_id: number;
 
-	title: string;
+    title: string;
     hook: string,
-	description: string | null;
+    description: string | null;
 
-	status: "draft" | "published" | "archived";
+    status: "draft" | "published" | "archived";
 
     min_price: number;
-	price_range: string;
-	thumbnail: string; // Directus file UUID
-	images: Images;
-	tags: Tags;
+    price_range: string;
+    thumbnail: string; // Directus file UUID
+    images: Images;
+    tags: Tags;
 
-	affiliate_urls: AffiliateUrl[];
+    affiliate_urls: AffiliateUrl[];
 
-	created_at: string; // ISO datetime
-	updated_at: string; // ISO datetime
+    created_at: string; // ISO datetime
+    updated_at: string; // ISO datetime
 };
