@@ -133,10 +133,12 @@ export const ProductPage: FC = () => {
                             <span className="text-xl sm:text-3xl font-bold text-gray-900"><span className="text-lg me-1">min</span>₹{product?.min_price}</span>
                             <div className="flex gap-2 sm:mt-2">
                                 <CopyButton
-                                    url={product?.affiliate_urls[0].url!}
-                                    className="flex-4/6 bg-black text-primary font-semibold py-3 rounded-2xl"
+                                    url={product?.affiliate_urls.find(l => l.best)?.url || product?.affiliate_urls[0].url!}
+                                    platform={product?.affiliate_urls.find(l => l.best)?.platform || product?.affiliate_urls[0].platform}
+                                    hideCopiedAnimation={true}
+                                    className="flex-4/6 bg-[#FFE4AD] hover:bg-[#FFDD99] font-semibold py-3 rounded-2xl flex items-center justify-center gap-2 transition-colors border border-border"
                                 >
-                                    Copy link to Best deal
+                                    Best buy
                                 </CopyButton>
                                 <button
                                     className="flex-2/6 bg-slate-300/40 border border-border/50 font-semibold py-3 rounded-2xl hover:opacity-90 transition-all active:scale-95 cursor-pointer"
@@ -173,7 +175,9 @@ export const ProductPage: FC = () => {
                                         )}
                                         <CopyButton
                                             url={link.url}
-                                            className="px-3 py-1.5 text-sm bg-black text-primary font-medium rounded-xl"
+                                            hideCopiedAnimation
+                                            showIconInstead={true}
+                                            className="px-3 py-1.5 text-sm bg-black text-primary font-medium rounded-xl flex items-center gap-2"
                                         >
                                             Copy
                                         </CopyButton>

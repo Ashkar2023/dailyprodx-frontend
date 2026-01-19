@@ -1,23 +1,41 @@
 import type { FC } from "react";
 import type { Product } from "../types/product.types";
-import { Check, ClipboardCheck, Copy } from "lucide-react";
+import { Sparkles, SquareArrowOutUpRight, Loader2 } from "lucide-react";
 import toast from "react-hot-toast";
 import { useCopyToClipboard } from "../hooks/useCopyToClipboard";
+import { useState } from "react";
 
 type Props = {
     product: Product
 }
 
 export const Card: FC<Props> = ({ product }) => {
-    const { copied, copyToClipboard } = useCopyToClipboard();
+    const { copyToClipboard } = useCopyToClipboard();
+    const [isLoading, setIsLoading] = useState(false);
+    const bestUrl = product.affiliate_urls.filter(l => l.best)[0]?.url || product.affiliate_urls[0]?.url;
 
     const handleCopy = async (e: React.MouseEvent) => {
         e.stopPropagation();
-        await copyToClipboard(product.affiliate_urls.filter(l => l.best)[0].url);
-        toast.success("Best Link copied to clipboard.", {
-            icon: <Check />,
+        
+        if (!bestUrl) return;
+        
+        // Copy to clipboard
+        await copyToClipboard(bestUrl);
+        
+        // Show toast with Sparkles icon
+        toast.success("Link copied!", {
+            icon: <Sparkles size={16} />,
             id: product.public_id.toString()
         });
+
+        // Start loading state
+        setIsLoading(true);
+
+        // Wait 2 seconds then open link in new tab
+        setTimeout(() => {
+            window.open(bestUrl, '_blank', 'noopener,noreferrer');
+            setIsLoading(false);
+        }, 2000);
     };
 
 
@@ -42,24 +60,16 @@ export const Card: FC<Props> = ({ product }) => {
                 <div className="flex items-stretch grow gap-1" data-card-footer>
                     <p className="rounded-xl sm:rounded-2xl border border-border/70 flex grow justify-center items-center text-xs font-medium text-green-600 ">{product.price_range}</p>
                     <button
-                        className="rounded-full bg-black min-w-7 relative text-primary font-medium gap-2 flex justify-center items-center cursor-pointer hover:grow hover:bg-black/85 transition-all active:scale-90"
+                        className="rounded-full bg-black min-w-7 relative text-primary font-medium gap-2 flex justify-center items-center cursor-pointer hover:grow hover:bg-black/85 transition-all active:scale-90 disabled:opacity-70 disabled:cursor-not-allowed"
                         onClick={handleCopy}
+                        disabled={isLoading}
                         data-copy
                     >
-                        <Copy
-                            className="absolute transition-[stroke-dashoffset] duration-200"
-                            size={12}
-                            strokeDasharray={80}
-                            strokeDashoffset={copied ? 80 : 0}
-                        />
-                        <ClipboardCheck
-                            className="absolute transition-[stroke-dashoffset] duration-500"
-                            size={14}
-                            strokeWidth={2}
-                            strokeDasharray={60}
-                            strokeDashoffset={copied ? 0 : -60}
-                            color="limegreen"
-                        />
+                        {isLoading ? (
+                            <Loader2 className="size-5 animate-spin" />
+                        ) : (
+                            <SquareArrowOutUpRight size={14} />
+                        )}
                     </button>
                 </div>
             </div>
