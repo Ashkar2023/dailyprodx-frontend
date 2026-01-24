@@ -3,7 +3,7 @@ import { Card } from "../components/card";
 import { useEffect, useRef, useState } from "react";
 import clsx from "clsx";
 import { useDirectus } from "../hooks/useDirectus";
-import { isDirectusError, readItems } from "@directus/sdk";
+import { readItems } from "@directus/sdk";
 import type { Product } from "../types/product.types";
 import { useNavigate } from "react-router";
 import toast from "react-hot-toast";
@@ -42,9 +42,7 @@ export const BrowsePage = () => {
                 }
                 setProducts(response);
             } catch (error) {
-                // if (isDirectusError(error)) {
-                // } else {
-                // }
+                // handle Directus error check
 
                 toast.error((error as Error).message);
             }

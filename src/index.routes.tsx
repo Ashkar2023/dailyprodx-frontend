@@ -6,6 +6,7 @@ import { BrowsePage } from "./pages/browse";
 import { ProductPage } from "./pages/product";
 import { SearchPage } from "./pages/search";
 import { PrivacyPolicy } from "./pages/privacy-policy";
+import { RankingsTable } from "./pages/leaderboard";
 
 export const router = createBrowserRouter([
     {
@@ -25,7 +26,11 @@ export const router = createBrowserRouter([
                 element: <BrowsePage/>
             },
             {
-                path: "p/:id",
+                path: "products",
+                element: <Navigate to="browse" replace/>
+            },
+            {
+                path: "products/:id",
                 element: <ProductPage/>
             },
             {
@@ -35,6 +40,10 @@ export const router = createBrowserRouter([
             {
                 path: "privacy-policy",
                 element: <PrivacyPolicy />,
+            },
+            {
+                path:"leaderboard",
+                element: <RankingsTable/>
             },
             {
                 path:"*",

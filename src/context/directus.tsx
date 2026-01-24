@@ -1,9 +1,10 @@
 import { createContext, type ReactNode } from "react";
 import { createDirectus, rest } from "@directus/sdk";
-import type { Product } from "../types/product.types";
+import type { Product, Ranking } from "../types/product.types";
 
 const directus = createDirectus<{
-    products: Product[]
+    products: Product[],
+    rankings: Ranking[]
 }>(import.meta.env.VITE_API_BASE_URL).with(rest());
 
 export type DirectusClient = typeof directus;

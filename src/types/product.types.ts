@@ -37,3 +37,14 @@ export type Product = {
     created_at: string; // ISO datetime
     updated_at: string; // ISO datetime
 };
+
+/////////////////////////////////////////////
+
+
+export type Ranking = {
+    id: string;
+    avatar: string;
+    name: string;
+    edit_count: number;
+    product_count: number;
+}

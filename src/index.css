@@ -30,3 +30,19 @@
 .bloom {
 	will-change: transform, opacity, filter;
 }
+
+
+.ranking-list .avatar-wrapper:first-child::after {
+  content: ''; /* required for pseudo-elements */
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 30px;
+  transform: translateX(10%) translateY(5%) rotate(15deg);
+  height: 40px;
+  z-index: 5; /* behind the img */
+  background-image: url("/medal-icon.svg"); /* your SVG here */
+  background-size: cover; /* adjust as needed */
+  background-repeat: no-repeat;
+  background-position: center;
+}

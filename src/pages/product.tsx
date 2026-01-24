@@ -1,6 +1,6 @@
 import clsx from "clsx";
 import { useEffect, useLayoutEffect, useState, type FC } from "react";
-import { NavLink, useLocation, useParams } from "react-router-dom";
+import { NavLink, useLocation, useNavigate, useParams } from "react-router-dom";
 import type { Product } from "../types/product.types";
 import { readItems } from "@directus/sdk";
 import { useDirectus } from "../hooks/useDirectus";
