@@ -61,7 +61,7 @@ export const BrowsePage = () => {
 
             if (card) {
                 const publicId = card.dataset.publicId;
-                navigate(`/p/${publicId}`);
+                navigate(`/products/${publicId}`);
             }
         };
 
