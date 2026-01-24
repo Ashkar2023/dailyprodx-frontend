@@ -66,11 +66,11 @@ export const RankingsTable: React.FC = () => {
                             key={person.id}
                             className="flex items-center gap-4 px-6 py-4 border-b border-gray-700/10 last:border-0"
                         >
-                            <div className='w-12 avatar-wrapper'>
+                            <div className='h-16 md:h-14 avatar-wrapper'>
                                 <img
                                     src={`${import.meta.env.VITE_API_BASE_URL}/assets/${person.avatar}?key=thumb-sm`}
                                     alt={person.name}
-                                    className="w-12 scale-125 sm:scale-150 avatar-img"
+                                    className="h-full object-contain scale-[200%] sm:scale-150"
                                 />
                             </div>
                             <div className="grow"></div>
