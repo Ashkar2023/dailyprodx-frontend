@@ -32,7 +32,7 @@ export const RankingsTable: React.FC = () => {
                 const response = await request;
                 const sortedRankings: ModifiedRanking[] = response.map(u => ({
                     ...u,
-                    total: u.product_count * 20 + u.edit_count * 50
+                    total: u.product_count * 15
                 })).sort((a, b) => b.total - a.total);
                 setRankings(sortedRankings);
             } catch {
@@ -54,7 +54,6 @@ export const RankingsTable: React.FC = () => {
                 {/* Table header */}
                 <div className="flex items-center gap-4 px-6 py-2 bg-[#FBF3DA]/30 backdrop:blur-sm border-b border-border text-sm sm:text-base font-medium shrink-0">
                     <div className="w-24 h-1"></div>
-                    <div className="w-24 text-center">Edits</div>
                     <div className="w-24 text-center">Products</div>
                     <div className="w-32 text-center text-green-400">Total</div>
                 </div>
@@ -70,11 +69,10 @@ export const RankingsTable: React.FC = () => {
                                 <img
                                     src={`${import.meta.env.VITE_API_BASE_URL}/assets/${person.avatar}?key=thumb-sm`}
                                     alt={person.name}
-                                    className="h-full object-contain scale-[200%] sm:scale-150"
+                                    className="h-full object-contain scale-150"
                                 />
                             </div>
                             <div className="grow"></div>
-                            <div className="w-24 text-center">{person.edit_count}</div>
                             <div className="w-24 text-center">{person.product_count}</div>
                             <div className="w-24 text-center font-semibold text-green-500">
                                 ₹{person.total}
