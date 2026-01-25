@@ -55,7 +55,7 @@ export const IdSearch = () => {
             return
         }
 
-        navigate(`/p/${searchValue}`, {
+        navigate(`/products/${searchValue}`, {
             state: {
                 product: response[0]
             }
