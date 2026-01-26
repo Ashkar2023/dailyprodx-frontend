@@ -12,7 +12,7 @@ type Props = {
 export const Card: FC<Props> = ({ product }) => {
     const { copyToClipboard } = useCopyToClipboard();
     const [isLoading, setIsLoading] = useState(false);
-    const bestUrl = product.affiliate_urls.filter(l => l.best)[0]?.url || product.affiliate_urls[0]?.url;
+    const bestUrl = product.affiliate_urls.filter(l => l.best)[0] || product.affiliate_urls[0];
 
     const handleCopy = async (e: React.MouseEvent) => {
         e.stopPropagation();
@@ -20,7 +20,7 @@ export const Card: FC<Props> = ({ product }) => {
         if (!bestUrl) return;
         
         // Copy to clipboard
-        await copyToClipboard(bestUrl);
+        await copyToClipboard(bestUrl.url);
         
         // Show toast with Sparkles icon
         toast.success("Link copied!", {
@@ -33,7 +33,7 @@ export const Card: FC<Props> = ({ product }) => {
 
         // Wait 2 seconds then open link in new tab
         setTimeout(() => {
-            window.open(bestUrl, '_blank', 'noopener,noreferrer');
+            window.open(bestUrl.url, '_blank', 'noopener,noreferrer');
             setIsLoading(false);
         }, 2000);
     };
@@ -58,9 +58,9 @@ export const Card: FC<Props> = ({ product }) => {
                     <h3 className="text-sm sm:text-base font-medium px-1 leading-5 text-gray-700 line-clamp-2 mb-1">{product.title}</h3>
                 </div>
                 <div className="flex items-stretch grow gap-1" data-card-footer>
-                    <p className="rounded-xl sm:rounded-2xl border border-border/70 flex grow justify-center items-center text-xs font-medium text-green-600 ">{product.price_range}</p>
+                    <p className="rounded-xl sm:rounded-2xl border border-border/70 flex grow justify-center items-center text-xs font-medium text-gray-500 ">min&nbsp;&nbsp;₹{product.min_price}</p>
                     <button
-                        className="rounded-full bg-black min-w-7 relative text-primary font-medium gap-2 flex justify-center items-center cursor-pointer hover:grow hover:bg-black/85 transition-all active:scale-90 disabled:opacity-70 disabled:cursor-not-allowed"
+                        className="rounded-full bg-[#cdd4e5] min-w-7 relative text-primary font-medium gap-2 flex justify-center items-center cursor-pointer hover:grow hover:bg-amber-600/60 transition-all active:scale-90 disabled:opacity-70 disabled:cursor-not-allowed"
                         onClick={handleCopy}
                         disabled={isLoading}
                         data-copy
@@ -68,7 +68,8 @@ export const Card: FC<Props> = ({ product }) => {
                         {isLoading ? (
                             <Loader2 className="size-5 animate-spin" />
                         ) : (
-                            <SquareArrowOutUpRight size={14} />
+                            // <SquareArrowOutUpRight size={14} />
+                            <img src={`/${bestUrl.platform.toLowerCase()}-icon.svg`} width={14} alt="" />
                         )}
                     </button>
                 </div>

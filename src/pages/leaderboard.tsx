@@ -54,7 +54,7 @@ export const RankingsTable: React.FC = () => {
                 {/* Table header */}
                 <div className="flex items-center gap-4 px-6 py-2 bg-[#FBF3DA]/30 backdrop:blur-sm border-b border-border text-sm sm:text-base font-medium shrink-0">
                     <div className="w-24 h-1"></div>
-                    <div className="w-24 text-center">Products</div>
+                    <div className="w-24 text-center">Products<sup>15</sup></div>
                     <div className="w-32 text-center text-green-400">Total</div>
                 </div>
 
